@@ -16,14 +16,14 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('home',[
-        'title'=> 'Home'
+    return view('home', [
+        'title' => 'Home'
     ]);
 });
 
 Route::get('/about', function () {
-    return view('about',[
-        'title'=> 'About'
+    return view('about', [
+        'title' => 'About'
     ]);
 });
 
@@ -33,4 +33,4 @@ Route::get('/about', function () {
 Route::get('/post', [PostController::class, 'index']);
 
 //Halaman Single Post
-Route::get('post/{slug}', [PostController::class, 'show']);
+Route::get('post/{post:slug}', [PostController::class, 'show']);
