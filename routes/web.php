@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,54 +30,7 @@ Route::get('/about', function () {
 
 
 
-Route::get('/post', function () {
-    $blog_posts= [
-        [
-            "title"=> 'Judul post Pertama',
-            "slug"=> 'judul-post-pertama',
-            "author"=> 'Satriyo',
-            "body"=> 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, inventore esse facere aperiam hic incidunt quas aliquid neque non voluptatem enim quasi, tempora blanditiis nostrum accusamus fugiat eaque, libero sequi placeat. Modi quod dolorum facere suscipit nesciunt, inventore mollitia voluptatem obcaecati minima, quis praesentium atque beatae enim repellendus reprehenderit cum dolore asperiores. Accusantium at facilis dolor corrupti totam ducimus sapiente eius. Id cumque repudiandae explicabo deleniti mollitia commodi adipisci dolorum quo delectus nam voluptates, fugit doloribus placeat facere minima magnam?'
-        ],
-        [
-            "title"=> 'Judul post Kedua',
-            "slug"=> 'judul-post-kedua',
-            "author"=> 'Nugroho',
-            "body"=> 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, inventore esse facere aperiam hic incidunt quas aliquid neque non voluptatem enim quasi, tempora blanditiis nostrum accusamus fugiat eaque, libero sequi placeat. Modi quod dolorum facere suscipit nesciunt, inventore mollitia voluptatem obcaecati minima, quis praesentium atque beatae enim repellendus reprehenderit cum dolore asperiores. Accusantium at facilis dolor corrupti totam ducimus sapiente eius. Id cumque repudiandae explicabo deleniti mollitia commodi adipisci dolorum quo delectus nam voluptates, fugit doloribus placeat facere minima magnam?'
-        ]
-        ];
-
-    return view('post',[
-        'title'=> 'Post',
-        'posts'=> $blog_posts
-    ]);
-});
+Route::get('/post', [PostController::class, 'index']);
 
 //Halaman Single Post
-Route::get('post/{slug}', function($slug){
-
-    $blog_posts= [
-        [
-            "title"=> 'Judul post Pertama',
-            "slug"=> 'judul-post-pertama',
-            "author"=> 'Satriyo',
-            "body"=> 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, inventore esse facere aperiam hic incidunt quas aliquid neque non voluptatem enim quasi, tempora blanditiis nostrum accusamus fugiat eaque, libero sequi placeat. Modi quod dolorum facere suscipit nesciunt, inventore mollitia voluptatem obcaecati minima, quis praesentium atque beatae enim repellendus reprehenderit cum dolore asperiores. Accusantium at facilis dolor corrupti totam ducimus sapiente eius. Id cumque repudiandae explicabo deleniti mollitia commodi adipisci dolorum quo delectus nam voluptates, fugit doloribus placeat facere minima magnam?'
-        ],
-        [
-            "title"=> 'Judul post Kedua',
-            "slug"=> 'judul-post-kedua',
-            "author"=> 'Nugroho',
-            "body"=> 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, inventore esse facere aperiam hic incidunt quas aliquid neque non voluptatem enim quasi, tempora blanditiis nostrum accusamus fugiat eaque, libero sequi placeat. Modi quod dolorum facere suscipit nesciunt, inventore mollitia voluptatem obcaecati minima, quis praesentium atque beatae enim repellendus reprehenderit cum dolore asperiores. Accusantium at facilis dolor corrupti totam ducimus sapiente eius. Id cumque repudiandae explicabo deleniti mollitia commodi adipisci dolorum quo delectus nam voluptates, fugit doloribus placeat facere minima magnam?'
-        ]
-        ];
-
-        $new_post = [];
-        foreach($blog_posts as $post){
-            if($post["slug"] === $slug){
-                $new_post = $post;
-            }
-        }
-    return view ('single-post', [
-        "title"=> "single-post",
-        "post"=> $new_post
-    ]);
-});
+Route::get('post/{slug}', [PostController::class, 'show']);
