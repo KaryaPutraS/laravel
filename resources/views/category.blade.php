@@ -9,7 +9,7 @@
 
     <article class="mb-5">
     <h2><a href="/post/{{ $post->slug}}" class="text-decoration-none">{{ $post->title }} </a></h2>
-    <h5>{{ $post->author }}</h5>
+    <h5>{{ $post->author->username }}</h5>
     <p>
     {{ $post->excerpt }}
     </p>

@@ -12,7 +12,13 @@ class PostController extends Controller
 
         return view('post', [
             'title' => 'Post',
-            'posts' => Post::all()
+
+            //cara menampilkan semua berdasarkan urutan id
+            // 'posts' => Post::all()
+
+            //cara menampilkan berdasarkan yang terbaru
+            'posts' => Post::latest()->get()
+
         ]);
     }
 
