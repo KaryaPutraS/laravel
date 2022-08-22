@@ -39,13 +39,13 @@ Route::get('/post', [PostController::class, 'index']);
 //Halaman Single Post
 Route::get('post/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('post', [
-        'title' => "Post By Category : $category->name",
-        'active' => 'categories',
-        'posts' => $category->posts->load('category', 'author'),
-    ]);
-});
+// Route::get('/categories/{category:slug}', function (Category $category) {
+//     return view('post', [
+//         'title' => "Post By Category : $category->name",
+//         'active' => 'categories',
+//         'posts' => $category->posts->load('category', 'author'),
+//     ]);
+// });
 
 Route::get('/categories', function () {
     return view('categories', [
@@ -55,12 +55,12 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get(
-    '/authors/{author:username}',
-    function (User $author) {
-        return view('post', [
-            'title' => "Post By Author : $author->name",
-            'posts' => $author->post->load('category', 'author'),
-        ]);
-    }
-);
+// Route::get(
+//     '/authors/{author:username}',
+//     function (User $author) {
+//         return view('post', [
+//             'title' => "Post By Author : $author->name",
+//             'posts' => $author->post->load('category', 'author'),
+//         ]);
+//     }
+// );
