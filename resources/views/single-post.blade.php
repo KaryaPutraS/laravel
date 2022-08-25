@@ -20,7 +20,7 @@
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
-                <a href="/post" class="text-decoration-none">BACK TO POST</a>
+                <a href="/post" class="text-decoration-none">BACK TES</a>
                 
             </div>
         </div>
