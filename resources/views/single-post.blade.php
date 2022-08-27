@@ -15,7 +15,13 @@
                         {{ $post->author->name }}</a> in <a href="/post?category={{ $post->category->slug }}" 
                         class="text-decoration-none"> {{ $post->category->name }}</a>
                 </p>
-                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                @if ($post->image)
+                <div>
+                    <img src="{{ asset('storage/'.$post->image) }}" class="card-img-top mt-3" alt="{{ $post->category->name }}">
+                </div>
+                @else
+                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top mt-3" alt="{{ $post->category->name }}">
+                @endif
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}

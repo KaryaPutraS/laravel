@@ -31,7 +31,12 @@
     @if ($posts->Count())
 
         <div class="card mb-3">
-            <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
+            @if ($posts[0]->image) 
+                <img src="{{ asset('storage/'.$posts[0]->image) }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
+            @else
+                <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
+            @endif
+            
             <div class="card-body text-center">
             <h3 class="card-title">
                 <a href="/post/{{ $posts[0]->slug}}" class="text-decoration-none text-dark">
@@ -68,7 +73,12 @@
                         </a>
                         
                     </div>
-                    <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                    @if ($post->image) 
+                        <img src="{{ asset('storage/'.$post->image) }}" class="card-img-top" alt="{{ $post->category->name }}">
+                    @else
+                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                    @endif
+                    
                     <div class="card-body">
                       <h5 class="card-title">{{ $post->title }}</h5>
                       <p>
