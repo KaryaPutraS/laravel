@@ -27,7 +27,6 @@
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
-                <a href="/post" class="text-decoration-none">BACK TO POST</a>
                 
             </div>z
         </div>
